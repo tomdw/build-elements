@@ -36,6 +36,7 @@ export class ExternalDashboardTileComponent implements OnInit {
     if (this.src > 3) {
       this.src = 1;
     }
+    this.load();
   }
 
 }
