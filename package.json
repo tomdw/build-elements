@@ -12,7 +12,10 @@
     "build:ce": "npm run bundle:ce && npm run copy:ce",
     "copy:ce": "cpr dist/external-dashboard-tile/main.js src/assets/external-dashboard-tile.bundle.js -o",
     "bundle:ce": "ng build --project external-dashboard-tile --prod --output-hashing none",
-    "npx-build-plus:copy-assets": "node projects/dashboard-tile/copy-wc-polyfill.js"
+    "npx-build-plus:copy-assets": "node projects/dashboard-tile/copy-wc-polyfill.js && node projects/dashboard-tile/copy-bundles.js",
+    "build:dashboard-tile:externals": "ng build --extra-webpack-config webpack.externals.js --single-bundle true --prod --project dashboard-tile",
+    "build:modern": "ng build --plugin ngx-build-modern --prod",
+    "build:modern:dashboard-tile": "ng build --plugin ngx-build-modern --project dashboard-tile --prod"
   },
   "private": true,
   "dependencies": {
