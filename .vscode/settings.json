@@ -26,5 +26,6 @@
         "text",
         "typescriptreact",
         "yml"
-    ]
+    ],
+    "workbench.colorTheme": "Visual Studio Dark"
 }

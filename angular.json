@@ -104,7 +104,7 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "ngx-build-plus:build",
           "options": {
             "outputPath": "dist/playground-app",
             "index": "projects/playground-app/src/index.html",
@@ -148,7 +148,7 @@
           }
         },
         "serve": {
-          "builder": "@angular-devkit/build-angular:dev-server",
+          "builder": "ngx-build-plus:dev-server",
           "options": {
             "browserTarget": "playground-app:build"
           },
@@ -165,7 +165,7 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "ngx-build-plus:karma",
           "options": {
             "main": "projects/playground-app/src/test.ts",
             "polyfills": "projects/playground-app/src/polyfills.ts",

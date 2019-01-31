@@ -27,23 +27,27 @@
   </div>
 
 
+
+  <!-- Here, all the shared code is imported -->
+  <!-- consider creating one or several bundles -->
+  <!-- for those -->
+
+  <!-- core-js for legacy browsers 
+        Consider only loading for IE
+  -->
+  <script src="./assets/core-js/core.js"></script>
+
   <!-- Polyfills for Browsers supporting 
         Custom Elements. Needed b/c we downlevel
         to ES5. See: @webcomponents/custom-elements
   -->
   <script src="./assets/custom-elements/src/native-shim.js"></script>
 
-  <!-- Polyfills for Browsers not supporting
-        Custom Elements. See: @webcomponents/custom-elements
-        Consider only loading when such a browser is used
-  -->
-  <script src="./assets/custom-elements/custom-elements.min.js"></script>
 
-
-  <!-- core-js for legacy browsers 
-        Consider only loading for IE
+  <!-- 
+        Web Component polyfills
   -->
-  <script src="./assets/core-js/core.js"></script>
+  <script src="/assets/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- Zone.js 
         Consider excluding zone.js when creating
@@ -54,6 +58,8 @@
   -->
   <script src="./assets/zone.js/zone.js"></script>
 
+  <!-- TODO: Add further needed polyfills here ... -->
+
   <!-- Rx -->
   <script src="./assets/rxjs/rxjs.umd.js"></script>
 
@@ -63,14 +69,16 @@
   <script src="./assets/common/bundles/common-http.umd.js"></script>
   <script src="./assets/elements/bundles/elements.umd.js"></script>
 
+  <script src="./assets/forms/bundles/forms.umd.js"></script>
+  <script src="./assets/router/bundles/router.umd.js"></script>
+
+  <!-- TODO: Add further needed Angular libs here ... -->
+
   <!-- Just needed for prod mode -->
   <script src="./assets/platform-browser/bundles/platform-browser.umd.js"></script>
-  
-  <!-- Just needed for dev mode -->
-  <!--
-  <script src="./assets/compiler/bundles/compiler.umd.js"></script>
-  <script src="./assets/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js"></script>
-  -->
+
+
+
 
 </body>
 </html>
