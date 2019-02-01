@@ -1,28 +1,47 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+
+export interface Data {
+  a: number;
+  b: number;
+  c: number;
+}
 
 @Component({
   // selector: 'app-external-dashboard-tile',
   templateUrl: './external-dashboard-tile.component.html',
-  styleUrls: ['./external-dashboard-tile.component.css']
+  styleUrls: ['./external-dashboard-tile.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush  
 })
-export class ExternalDashboardTileComponent {
+export class ExternalDashboardTileComponent implements OnInit {
+
+  @Input() src: number = 1;
+  
+  data$ = new BehaviorSubject<Data>({a: 1, b: 2, c: 3});
 
   constructor(private http: HttpClient) {
+  
   }
 
-  @Input() a: number;
-  @Input() b: number;
-  @Input() c: number;
+  ngOnInit(): void {
+    this.load();  
+  }
 
-  more() {
-    this.http.get('/assets/stats.json').subscribe(
+  load() {
+    this.http.get<Data>(`/assets/stats-${this.src}.json`).subscribe(
       data => {
-        this.a = data['a'];
-        this.b = data['b'];
-        this.c = data['c'];
+        this.data$.next(data);
       }
     );
+  }
+
+  more() {
+    this.src++;
+    if (this.src > 3) {
+      this.src = 1;
+    }
+    this.load();
   }
 
 }
